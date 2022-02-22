@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../atoms/Button/Button';
+import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 import { Wrapper, StyledAverage, StyledInfo } from './UserListItem.styles';
 
 const showIndex = (index) => alert(`This is student ${index + 1}`);
 
 const UsersListItem = ({
-  index,
+  deleteUser,
   userData: { average, name, attendance = '0%' },
 }) => {
   return (
@@ -14,9 +14,9 @@ const UsersListItem = ({
       <StyledAverage value={average}>{average}</StyledAverage>
       <StyledInfo>
         <p>{name}</p>
-        <p>{attendance}</p>
+        <p>Attendance: {attendance}</p>
       </StyledInfo>
-      <Button onClick={() => showIndex(index)} />
+      <DeleteButton onClick={() => deleteUser(name)} />
     </Wrapper>
   );
 };
